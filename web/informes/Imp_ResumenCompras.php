@@ -89,7 +89,7 @@ $pdf->SetFont('Arial','B',10);
 
 
 
-$conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres"
+$conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
 $consulta=pg_exec($conectate,"SELECT 
                     ord.ord_tipo,ord.ord_nro,ord.ord_fecha,ord.ord_termino,ord.ord_res,ord.ord_monto,ord.ord_iva,max(pro.pro_razon) as pro_razon,ord.facturado 
@@ -149,7 +149,7 @@ while($i<$numregs)
  * 
  */
 $pdf->SetFont('Arial','B',8);
-$conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres"
+$conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
 $consulta2=pg_exec($conectate,"SELECT sum (ord.ord_monto) as monto,sum(ord.ord_iva) as iva
                     from orden_compras ord, proveedores pro

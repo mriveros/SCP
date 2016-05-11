@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -25,7 +25,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
          if(func_existeDato(0, 'pagos_creados', 'pag_cod')==true){
                 echo '<script type="text/javascript">
 		alert("Error al crear la orden de pago. Contacte con el Programador");
-                window.location="http://localhost/HansaII/web/orden_pagos/Crear_Pago.php";
+                window.location="http://localhost/SGP/web/orden_pagos/Crear_Pago.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -34,11 +34,11 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
-                header("Refresh:0; url=http://localhost/HansaII/web/orden_pagos/Crear_Pago.php");
+                header("Refresh:0; url=http://localhost/SGP/web/orden_pagos/Crear_Pago.php");
                 }         
      }
       if(isset($_POST['borrar'])){
             pg_query("delete from pagos_creados where pag_cod=$codigoElim") or die('Error al realizar SQL');
-             header("Refresh:0; url=http://localhost/HansaII/web/orden_pagos/Crear_Pago.php");
+             header("Refresh:0; url=http://localhost/SGP/web/orden_pagos/Crear_Pago.php");
 	}
     

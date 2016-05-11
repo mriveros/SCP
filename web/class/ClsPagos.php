@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -38,16 +38,16 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 $resultado=pg_query($query);
                 $row=  pg_fetch_array($resultado);
                 $ejecucion = pg_query("update cuentas set cuen_anterior=cuen_saldo, cuen_saldo=cuen_saldo-$montoA WHERE cuen_cod=$cuentaA")or die('Error al realizar la carga'); 
-                header("Refresh:0; url=http://localhost/HansaII/web/orden_pagos/OrdenPago.php");
+                header("Refresh:0; url=http://localhost/SGP/web/orden_pagos/OrdenPago.php");
                }
            else{
                 echo '<script type="text/javascript">
 		alert("El Monto a Pagar es mayor que la disponible.Intente pagar con otra cuenta o comuniquese con el administrador");
-                window.location="http://localhost/HansaII/web/orden_pagos/OrdenPago.php";
+                window.location="http://localhost/SGP/web/orden_pagos/OrdenPago.php";
 		</script>'; 
                 
            }
-                header("Refresh:0; url=http://localhost/HansaII/web/orden_pagos/OrdenPago.php");
+                header("Refresh:0; url=http://localhost/SGP/web/orden_pagos/OrdenPago.php");
                 
      }
     

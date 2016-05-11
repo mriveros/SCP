@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -30,7 +30,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($nombreA, 'bancos', 'ban_nom')==true){
                 echo '<script type="text/javascript">
 		alert("El Banco ya existe. Ingrese otro Banco");
-                window.location="http://localhost/HansaII/web/bancos/ABMbanco.php";
+                window.location="http://localhost/SGP/web/bancos/ABMbanco.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -39,7 +39,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
-                header("Refresh:0; url=http://localhost/HansaII/web/bancos/ABMbanco.php");
+                header("Refresh:0; url=http://localhost/SGP/web/bancos/ABMbanco.php");
                 }
             }
         //si es Modificar    
@@ -50,10 +50,10 @@ $codusuario=  $_SESSION["codigo_usuario"];
                     . "ban_activo='$estadoM' "
                     . "WHERE ban_cod=$codigoModif");
             $query = '';
-            header("Refresh:0; url=http://localhost/HansaII/web/bancos/ABMbanco.php");
+            header("Refresh:0; url=http://localhost/SGP/web/bancos/ABMbanco.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update bancos set ban_activo='f' WHERE ban_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/HansaII/web/bancos/ABMbanco.php");
+            header("Refresh:0; url=http://localhost/SGP/web/bancos/ABMbanco.php");
 	}

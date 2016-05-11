@@ -42,7 +42,7 @@ function Header()
     //------------------------RECIBIMOS LOS VALORES DE POST-----------
     
     if  (empty($_POST['txtOrdenImprimir'])){$nrofactura='';}else{ $nrofactura = $_POST['txtOrdenImprimir'];}
-    $conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres"
+    $conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
     $consulta=pg_exec($conectate,"select pro_razon,ord.ord_monto,ord.ord_iva 
     from orden_compras ord,proveedores pro 
@@ -86,7 +86,7 @@ $i=0;
 $pdf->SetFont('Arial','',10);
 
 //------------------------QUERY and data cargue y se reciben los datos-----------
-$conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres"
+$conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
 $consulta=pg_exec($conectate,"select pro.pro_nom,comdet_cant,comdet_precio,comdet_subtotal
 from orden_compras ord,compras_detalles comdet,productos pro 

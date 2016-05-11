@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -30,7 +30,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($numeroA, 'orden_compras', 'ord_nro')==true){
                 echo '<script type="text/javascript">
 		alert("La Orden de Compra ya existe. Ingrese otro Orden de Compra.");
-                window.location="http://localhost/HansaII/web/orden_compras/RegistrarOrden.php";
+                window.location="http://localhost/SGP/web/orden_compras/RegistrarOrden.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -41,19 +41,19 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
-                header("Refresh:0; url=http://localhost/HansaII/web/orden_compras/RegistrarOrden.php");
+                header("Refresh:0; url=http://localhost/SGP/web/orden_compras/RegistrarOrden.php");
                 }
      }
     //----------------------------Borrar Datos---------------------------------- 
       if(isset($_POST['borrar'])){
             $ejecucion = pg_query("delete from compras_detalles  WHERE ord_cod=$codigoElim")or die('Error al realizar la carga'); 
             $ejecucion =pg_query("delete from orden_compras  WHERE ord_cod=$codigoElim")or die('Error al realizar la carga'); 
-            header("Refresh:0; url=http://localhost/HansaII/web/orden_compras/RegistrarOrden.php");
+            header("Refresh:0; url=http://localhost/SGP/web/orden_compras/RegistrarOrden.php");
             
 	}
     //----------------------------Enviar Datos a Tesoreria------------------
         if(isset($_POST['enviarDatos'])){
             $ejecucion = pg_query("update orden_compras set facturado='t' where ord_nro='$nroOrdenCompra'")or die('Error al realizar la carga');
-            header("Refresh:0; url=http://localhost/HansaII/web/orden_compras/RegistrarOrden.php");
+            header("Refresh:0; url=http://localhost/SGP/web/orden_compras/RegistrarOrden.php");
             
 	}

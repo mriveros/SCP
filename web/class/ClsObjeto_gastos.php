@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -30,7 +30,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($nombreA, 'objeto_gastos', 'obj_nom')==true){
                 echo '<script type="text/javascript">
 		alert("El objeto de gasto ya existe. Ingrese otro objeto de gastos");
-                window.location="http://localhost/HansaII/web/objeto_gastos/ABMobjeto_gasto.php";
+                window.location="http://localhost/SGP/web/objeto_gastos/ABMobjeto_gasto.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -39,7 +39,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
-                header("Refresh:0; url=http://localhost/HansaII/web/objeto_gastos/ABMobjeto_gasto.php");
+                header("Refresh:0; url=http://localhost/SGP/web/objeto_gastos/ABMobjeto_gasto.php");
                 }
             }
         //si es Modificar    
@@ -50,10 +50,10 @@ $codusuario=  $_SESSION["codigo_usuario"];
                     . "obj_activo='$estadoM' "
                     . "WHERE obj_cod=$codigoModif");
             $query = '';
-            header("Refresh:0; url=http://localhost/HansaII/web/objeto_gastos/ABMobjeto_gasto.php");
+            header("Refresh:0; url=http://localhost/SGP/web/objeto_gastos/ABMobjeto_gasto.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update objeto_gastos set obj_activo='f' WHERE obj_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/HansaII/web/objeto_gastos/ABMobjeto_gasto.php");
+            header("Refresh:0; url=http://localhost/SGP/web/objeto_gastos/ABMobjeto_gasto.php");
 	}

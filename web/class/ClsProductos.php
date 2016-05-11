@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -36,7 +36,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($nombreA, 'productos', 'pro_nom')==true){
                 echo '<script type="text/javascript">
 		alert("El Producto ya existe. Ingrese otro Producto.");
-                window.location="http://localhost/HansaII/web/productos/ABMproducto.php";
+                window.location="http://localhost/SGP/web/productos/ABMproducto.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -45,7 +45,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
-                header("Refresh:0; url=http://localhost/HansaII/web/productos/ABMproducto.php");
+                header("Refresh:0; url=http://localhost/SGP/web/productos/ABMproducto.php");
                 }
             }
         //si es Modificar    
@@ -59,12 +59,12 @@ $codusuario=  $_SESSION["codigo_usuario"];
                     . "pro_activo='$estadoM'"
                     . "WHERE pro_cod=$codigoModif");
             $query = '';
-            header("Refresh:0; url=http://localhost/HansaII/web/productos/ABMproducto.php");
+            header("Refresh:0; url=http://localhost/SGP/web/productos/ABMproducto.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update productos set pro_activo='f' WHERE pro_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/HansaII/web/productos/ABMproducto.php");
+            header("Refresh:0; url=http://localhost/SGP/web/productos/ABMproducto.php");
             
 	}
         

@@ -40,7 +40,7 @@ function Header()
 	$this->Line(230,40,10,40);//largor,ubicacion derecha,inicio,ubicacion izquierda
     //------------------------RECIBIMOS LOS VALORES DE POST-----------
     if  (empty($_POST['txtCodigoFactura'])){$codfactura='';}else{ $codfactura = $_POST['txtCodigoFactura'];}
-    $conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres")
+    $conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres")
     or die ('Error al conectar a la base de datos');
     $consulta=pg_exec($conectate,"   select ret.ret_cod,ret.ret_nom,pro.pro_nom||' '||pro.pro_ape as proveedor,
     pro.pro_razon , fac.fac_cod,fac.fac_nro,pagret.pagret_cod,pagret.pagret_fecha,pagret.pagret_monto
@@ -89,10 +89,10 @@ $fill=false;
 $i=0;
 $pdf->SetFont('Arial','',10);
 //------------------------QUERY and data cargue y se reciben los datos-----------
-$conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres"
+$conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
 
-    $conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres"
+    $conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
     $consulta=pg_exec($conectate,"select ret.ret_cod,ret.ret_nom,pro.pro_nom||' '||pro.pro_ape as proveedor,
     pro.pro_razon , fac.fac_cod,fac.fac_nro,pagret.pagret_cod,pagret.pagret_fecha,pagret.pagret_monto

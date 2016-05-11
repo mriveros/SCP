@@ -42,7 +42,7 @@ function Header()
     
     if  (empty($_POST['txtCodigoA'])){$codPago='';}else{ $codPago = $_POST['txtCodigoA'];}
     
-    $conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres"
+    $conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
     $consulta=pg_exec($conectate,"select pro.pro_nom || ' '||pro.pro_ape as proveedor, pro.pro_razon, pro.pro_ruc,pro.pro_dir,
     ban.ban_nom,cuen.cuen_nom,ordpag.pag_cheque,ordpag.pag_monto,fac.fac_nro,ordpag.pag_fuente
@@ -140,7 +140,7 @@ $i=0;
 $pdf->SetFont('Arial','',10);
 
 //------------------------QUERY and data cargue y se reciben los datos-----------
-$conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres"
+$conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
 $consulta=pg_exec($conectate,"select pro.pro_nom || ' '||pro.pro_ape as proveedor, pro.pro_razon, pro.pro_ruc,pro.pro_dir,
     ban.ban_nom,cuen.cuen_nom,ordpag.pag_cheque,ordpag.pag_monto,fac.fac_nro,fac.fac_cod,con.con_nom,fac.fac_obs

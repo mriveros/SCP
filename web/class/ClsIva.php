@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -32,7 +32,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($nombreA, 'iva', 'iva_nom')==true){
                 echo '<script type="text/javascript">
 		alert("El impuesto ya existe. Ingrese otro nombre");
-                window.location="http://localhost/HansaII/web/iva/ABMiva.php";
+                window.location="http://localhost/SGP/web/iva/ABMiva.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -41,7 +41,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
-                header("Refresh:0; url=http://localhost/HansaII/web/iva/ABMiva.php");
+                header("Refresh:0; url=http://localhost/SGP/web/iva/ABMiva.php");
                 }
             }
         //si es Modificar    
@@ -53,10 +53,10 @@ $codusuario=  $_SESSION["codigo_usuario"];
                     . "iva_porcentaje=$porcentajeM"
                     . "WHERE iva_cod=$codigoModif");
             $query = '';
-            header("Refresh:0; url=http://localhost/HansaII/web/iva/ABMiva.php");
+            header("Refresh:0; url=http://localhost/SGP/web/iva/ABMiva.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update iva set iva_activo='f' WHERE iva_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/HansaII/web/iva/ABMiva.php");
+            header("Refresh:0; url=http://localhost/SGP/web/iva/ABMiva.php");
 	}

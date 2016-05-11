@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -29,7 +29,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($nombreA, 'firmantes', 'fir_nom')==true){
                 echo '<script type="text/javascript">
 		alert("El Firmante ya existe. Ingrese otro Firmante");
-                window.location="http://localhost/HansaII/web/firmantes/ABMfirmante.php";
+                window.location="http://localhost/SGP/web/firmantes/ABMfirmante.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -38,7 +38,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
-                header("Refresh:0; url=http://localhost/HansaII/web//firmantes/ABMfirmante.php");
+                header("Refresh:0; url=http://localhost/SGP/web//firmantes/ABMfirmante.php");
                 }
             }
         //si es Modificar    
@@ -49,10 +49,10 @@ $codusuario=  $_SESSION["codigo_usuario"];
                     . "fir_activo='$estadoM' "
                     . "WHERE fir_cod=$codigoModif");
             $query = '';
-            header("Refresh:0; url=http://localhost/HansaII/web/firmantes/ABMfirmante.php");
+            header("Refresh:0; url=http://localhost/SGP/web/firmantes/ABMfirmante.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update firmantes set fir_activo='f' WHERE fir_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/HansaII/web/firmantes/ABMfirmante.php");
+            header("Refresh:0; url=http://localhost/SGP/web/firmantes/ABMfirmante.php");
 	}

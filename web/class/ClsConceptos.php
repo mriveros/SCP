@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -30,7 +30,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($nombreA, 'conceptos', 'con_nom')==true){
                 echo '<script type="text/javascript">
 		alert("El concepto ya existe. Ingrese otro concepto");
-                window.location="http://localhost/HansaII/web/conceptos/ABMconcepto.php";
+                window.location="http://localhost/SGP/web/conceptos/ABMconcepto.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -39,7 +39,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
-                header("Refresh:0; url=http://localhost/HansaII/web/conceptos/ABMconcepto.php");
+                header("Refresh:0; url=http://localhost/SGP/web/conceptos/ABMconcepto.php");
                 }
             }
         //si es Modificar    
@@ -50,10 +50,10 @@ $codusuario=  $_SESSION["codigo_usuario"];
                     . "con_activo='$estadoM' "
                     . "WHERE con_cod=$codigoModif");
             $query = '';
-            header("Refresh:0; url=http://localhost/HansaII/web/conceptos/ABMconcepto.php");
+            header("Refresh:0; url=http://localhost/SGP/web/conceptos/ABMconcepto.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update conceptos set con_activo='f' WHERE con_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/HansaII/web/conceptos/ABMconcepto.php");
+            header("Refresh:0; url=http://localhost/SGP/web/conceptos/ABMconcepto.php");
 	}

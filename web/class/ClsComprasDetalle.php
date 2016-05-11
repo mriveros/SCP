@@ -25,7 +25,7 @@
                 . "VALUES ($codcabecera,$producto,$cantidad,$precio,$cantidad*$precio,((($cantidad*$precio)/1.05)*0.05));";
         pg_query($query)or die('Error al realizar la carga agregar 5');
         calcularMonto($codcabecera);
-        header("Refresh:0; url=http://localhost/HansaII/web/orden_compras/IngDetalle.php");
+        header("Refresh:0; url=http://localhost/SGP/web/orden_compras/IngDetalle.php");
         
     }elseif($iva==2){
         if ($exento>0)
@@ -43,14 +43,14 @@
         pg_query($query)or die('Error al realizar la carga agregar exenta ');
         calcularMonto($codcabecera);
         }
-        header("Refresh:0; url=http://localhost/HansaII/web/orden_compras/IngDetalle.php");
+        header("Refresh:0; url=http://localhost/SGP/web/orden_compras/IngDetalle.php");
         
     }elseif($iva==3){
         
         $query = "INSERT INTO compras_detalles(ord_cod,pro_cod,comdet_cant,comdet_precio,comdet_subtotal) "
                 . "VALUES ($codcabecera,$producto,$cantidad,$precio,$cantidad*$precio);";
         pg_query($query)or die('Error al realizar la carga agregar exenta ');
-        header("Refresh:0; url=http://localhost/HansaII/web/orden_compras/IngDetalle.php");
+        header("Refresh:0; url=http://localhost/SGP/web/orden_compras/IngDetalle.php");
         
     }
 
@@ -59,7 +59,7 @@
   if(isset($_POST['borrar'])){
         pg_query("delete from compras_detalles WHERE comdet_cod=$codigoDetalle");
        
-        header("Refresh:0; url=http://localhost/HansaII/web/orden_compras/IngDetalle.php");
+        header("Refresh:0; url=http://localhost/SGP/web/orden_compras/IngDetalle.php");
   }
   
   function calcularMonto( $codcabecera){

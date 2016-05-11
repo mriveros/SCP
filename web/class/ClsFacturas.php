@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -38,7 +38,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($numeroA, 'facturas', 'fac_nro')==true){
                 echo '<script type="text/javascript">
 		alert("La Factura ya existe. Ingrese otro numero de Factura.");
-                window.location="http://localhost/HansaII/web/facturacion/RegistrarFacturaCompra.php";
+                window.location="http://localhost/SGP/web/facturacion/RegistrarFacturaCompra.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -49,7 +49,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
                 $ejecucion = pg_query("update orden_compras set ord_activo='f' WHERE ord_cod=$ordenA")or die('Error al realizar la carga'); 
-                header("Refresh:0; url=http://localhost/HansaII/web/facturacion/RegistrarFacturaCompra.php");
+                header("Refresh:0; url=http://localhost/SGP/web/facturacion/RegistrarFacturaCompra.php");
                 }
      }
     //----------------------------Borrar Datos---------------------------------- 
@@ -68,7 +68,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
         
         $ejecucion = pg_query("delete from facturas  WHERE fac_nro='$nroElim'")or die('Error al realizar la carga'); 
         $ejecucion = pg_query("update orden_compras set ord_activo='t',facturado='t' WHERE ord_cod='$codOrdenCompra'")or die('Error al realizar la carga');    
-        header("Refresh:0; url=http://localhost/HansaII/web/facturacion/RegistrarFacturaCompra.php");
+        header("Refresh:0; url=http://localhost/SGP/web/facturacion/RegistrarFacturaCompra.php");
             
 	}
         
@@ -77,7 +77,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($numeroA, 'facturas', 'fac_nro')==true){
                 echo '<script type="text/javascript">
 		alert("La Factura ya existe. Ingrese otro numero de Factura.");
-                window.location="http://localhost/HansaII/web/facturacion/CrearFactura.php";
+                window.location="http://localhost/SGP/web/facturacion/CrearFactura.php";
 		</script>';
                 }else{
                 //-----------------------Calculo del IVA---------------------------
@@ -89,12 +89,12 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
-                header("Refresh:0; url=http://localhost/HansaII/web/facturacion/CrearFactura.php");
+                header("Refresh:0; url=http://localhost/SGP/web/facturacion/CrearFactura.php");
                 }
      }
     //----------------------------Borrar la factura creada------------------
         if(isset($_POST['borrarCrearFactura'])){
             $ejecucion = pg_query("delete from facturas where fac_nro='$nroElim'")or die('Error al realizar la carga');
-            header("Refresh:0; url=http://localhost/HansaII/web/facturacion/CrearFactura.php");
+            header("Refresh:0; url=http://localhost/SGP/web/facturacion/CrearFactura.php");
             
 	}

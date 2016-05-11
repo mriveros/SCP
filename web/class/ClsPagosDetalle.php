@@ -21,7 +21,7 @@
                 . "VALUES ($codcabecera,$producto,$precio,$tipoDetalleM);";
         pg_query($query)or die('Error al cargar el detalle');
         calcularMonto($codcabecera);
-        header("Refresh:0; url=http://localhost/HansaII/web/orden_pagos/IngDetalle.php");
+        header("Refresh:0; url=http://localhost/SGP/web/orden_pagos/IngDetalle.php");
         
     
 
@@ -30,7 +30,7 @@
   if(isset($_POST['borrar'])){
         pg_query("delete from pagos_detalles WHERE pagdet_cod=$codigoDetalle");
         calcularMonto($codcabecera);
-        header("Refresh:0; url=http://localhost/HansaII/web/orden_pagos/IngDetalle.php");
+        header("Refresh:0; url=http://localhost/SGP/web/orden_pagos/IngDetalle.php");
   }
   
   function calcularMonto( $codcabecera){

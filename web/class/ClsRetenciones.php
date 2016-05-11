@@ -2,7 +2,7 @@
 /*
  * Autor: Marcos A. Riveros.
  * Año: 2015
- * Sistema de Compras y Pagos Hansa II
+ * Sistema de Compras y Pagos SGP-INTN
  */
 session_start();
 $codusuario=  $_SESSION["codigo_usuario"];
@@ -37,7 +37,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($nombreA, 'retenciones', 'ret_nom')==true){
                 echo '<script type="text/javascript">
 		alert("La retencion ya existe. Ingrese otra retencion");
-                window.location="http://localhost/HansaII/web/rentenciones/ABMretencion.php";
+                window.location="http://localhost/SGP/web/rentenciones/ABMretencion.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -46,7 +46,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('Error al realizar la carga');
                 $query = '';
-                header("Refresh:0; url=http://localhost/HansaII/web/retenciones/ABMretencion.php");
+                header("Refresh:0; url=http://localhost/SGP/web/retenciones/ABMretencion.php");
                 }
             }
         //si es Modificar    
@@ -59,12 +59,12 @@ $codusuario=  $_SESSION["codigo_usuario"];
                     . "ret_activo='$estadoM' "
                     . "WHERE ret_cod=$codigoModif");
             $query = '';
-            header("Refresh:0; url=http://localhost/HansaII/web/retenciones/ABMretencion.php");
+            header("Refresh:0; url=http://localhost/SGP/web/retenciones/ABMretencion.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update retenciones set ret_activo='f' WHERE ret_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/HansaII/web/retenciones/ABMretencion.php");
+            header("Refresh:0; url=http://localhost/SGP/web/retenciones/ABMretencion.php");
 	}
         
         if(isset($_POST['calcularRetencion'])){
@@ -100,12 +100,12 @@ $codusuario=  $_SESSION["codigo_usuario"];
         . "VALUES (2,$codigoFactura,now(),$retencion004,'t');";
         $ejecucion = pg_query($query)or die('Error al realizar la carga');
         pg_query("update facturas set fac_retencion='t' WHERE fac_cod=$codigoFactura");
-        header("Refresh:0; url=http://localhost/HansaII/web/facturacion/Retenciones.php");
+        header("Refresh:0; url=http://localhost/SGP/web/facturacion/Retenciones.php");
 	}
          if(isset($_POST['sinRetencion'])){
              
             pg_query("update facturas set fac_retencion='t' WHERE fac_cod=$codigoFacturaSINRETENCION");
-            header("Refresh:0; url=http://localhost/HansaII/web/facturacion/Retenciones.php");
+            header("Refresh:0; url=http://localhost/SGP/web/facturacion/Retenciones.php");
          }
          
         

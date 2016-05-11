@@ -42,7 +42,7 @@ function Header()
     //------------------------RECIBIMOS LOS VALORES DE POST-----------
     
     if  (empty($_POST['txtFacturaImprimir'])){$nrofactura='';}else{ $nrofactura = $_POST['txtFacturaImprimir'];}
-    $conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres"
+    $conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
     $consulta=pg_exec($conectate,"select pro.pro_razon,to_char(fac.fac_fecha,'DD/MM/YYYY') as fac_fecha,con.con_nom,fac.fac_monto,fac.fac_iva from facturas fac, proveedores pro,conceptos con
     where fac.fac_nro='$nrofactura' 
@@ -86,7 +86,7 @@ $i=0;
 $pdf->SetFont('Arial','',10);
 
 //------------------------QUERY and data cargue y se reciben los datos-----------
-$conectate=pg_connect("host=localhost port=5432 dbname=HansaII user=postgres password=postgres"
+$conectate=pg_connect("host=localhost port=5432 dbname=precintos user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
 $consulta=pg_exec($conectate,"select pro.pro_razon,to_char(fac.fac_fecha,'DD/MM/YYYY') as fac_fecha,
 con.con_nom,fac.fac_monto,fac.fac_iva,fac.fac_obs 
